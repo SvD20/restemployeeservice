@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestEmployeeServiceApplicationTests {
+class EmployeeServiceUnitTests {
 
 	@Test
-	void contextLoads() {
+	void employeeAddTestHappyFlow() {
 	}
 
 }
