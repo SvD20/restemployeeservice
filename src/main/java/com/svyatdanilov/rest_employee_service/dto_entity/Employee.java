@@ -1,6 +1,7 @@
-package com.svyatdanilov.rest_employee_service.dto;
+package com.svyatdanilov.rest_employee_service.dto_entity;
 import javax.persistence.*;
 
+@Entity
 @Table(name = "employees")
 public class Employee {
     @Id
@@ -23,12 +24,24 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String surname, String department, int salary) {
-        this.id = id;
+
+    public Employee(String name, String surname, String department, int salary) {
         this.name = name;
         this.surname = surname;
         this.department = department;
         this.salary = salary;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 
     public int getId() {
