@@ -22,6 +22,18 @@ public class EmployeeService implements Service<Employee>{
     }
 
     @Override
+    public void updateObject(int id, Employee object) {
+        customizedEmployeeJPARepository.findById(id).ifPresent(updatedEmployee ->{
+            updatedEmployee.setName(object.getName());
+            updatedEmployee.setSurname(object.getSurname());
+            updatedEmployee.setDepartment(object.getDepartment());
+            updatedEmployee.setSalary(object.getSalary());
+
+            customizedEmployeeJPARepository.save(updatedEmployee);
+        });
+    }
+
+    @Override
     public Optional<Employee> getObject(int id) {
         return customizedEmployeeJPARepository.findById(id);
     }
