@@ -9,6 +9,8 @@ public interface Service <T> {
 
     T saveObject(T obj);
 
+    void updateObject(int id, T object);
+
     Optional<T> getObject(int id);
 
     void deleteObject(int id);
