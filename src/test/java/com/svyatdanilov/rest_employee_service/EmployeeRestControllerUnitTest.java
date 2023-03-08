@@ -3,7 +3,7 @@ package com.svyatdanilov.rest_employee_service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.svyatdanilov.rest_employee_service.controller.EmployeeController;
 import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
-import com.svyatdanilov.rest_employee_service.service.EmployeeService;
+import com.svyatdanilov.rest_employee_service.service.EmployeeBaseServiceImpl;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
@@ -28,7 +27,6 @@ import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.hamcrest.Matchers.*;
 
@@ -42,9 +40,8 @@ public class EmployeeRestControllerUnitTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @MockBean
-    private EmployeeService employeeService;
+    private EmployeeBaseServiceImpl employeeServiceImpl;
 
     @Test
     public void getAllEmployeesHappyFlow() throws Exception {
@@ -52,7 +49,7 @@ public class EmployeeRestControllerUnitTest {
 
         List<Employee> allEmployees = Arrays.asList(testEmployee);
 
-        Mockito.when(employeeService.getAllObjects()).thenReturn(allEmployees);
+        Mockito.when(employeeServiceImpl.getAllObjects()).thenReturn(allEmployees);
 
         mvc.perform(get("/employees/").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -66,7 +63,7 @@ public class EmployeeRestControllerUnitTest {
         final int id = 1;
         testEmployee.setId(id);
 
-        Mockito.when(employeeService.getObject(id)).thenReturn(Optional.of(testEmployee));
+        Mockito.when(employeeServiceImpl.getObject(id)).thenReturn(Optional.of(testEmployee));
 
         mvc.perform(get("/employees/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -80,11 +77,6 @@ public class EmployeeRestControllerUnitTest {
     @Test
     public void addEmployeeHappyFlow() throws Exception {
         Employee sendingEmployee = new Employee("test","test","test",1);
-        //Employee savedEmployee = new Employee("test","test","test",1);
-        //savedEmployee.setId(1);
-
-        //Mockito.when(employeeService.saveObject(sendingEmployee)).thenReturn(savedEmployee);
-
 
         mvc.perform(post("/employees/").content(objectMapper.writeValueAsString(sendingEmployee))
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))

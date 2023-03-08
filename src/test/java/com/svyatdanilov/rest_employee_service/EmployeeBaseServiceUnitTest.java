@@ -3,7 +3,7 @@ package com.svyatdanilov.rest_employee_service;
 
 import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
 import com.svyatdanilov.rest_employee_service.repository.CustomizedEmployeeJPARepository;
-import com.svyatdanilov.rest_employee_service.service.EmployeeService;
+import com.svyatdanilov.rest_employee_service.service.EmployeeBaseServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -13,13 +13,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EmployeeServiceUnitTest {
+public class EmployeeBaseServiceUnitTest {
 
     @Mock
     private CustomizedEmployeeJPARepository customizedEmployeeJPARepository;
 
     @InjectMocks
-    private EmployeeService employeeService;
+    private EmployeeBaseServiceImpl employeeService;
 
     @Test
     public void getAllEmployeesHappyFlow(){

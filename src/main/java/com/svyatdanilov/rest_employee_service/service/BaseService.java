@@ -3,7 +3,7 @@ package com.svyatdanilov.rest_employee_service.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface Service <T> {
+public interface BaseService<T> {
 
     Iterable<T> getAllObjects();
 
@@ -14,5 +14,6 @@ public interface Service <T> {
     Optional<T> getObject(int id);
 
     void deleteObject(int id);
+
 
 }
