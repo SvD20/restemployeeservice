@@ -15,9 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -84,6 +82,33 @@ public class EmployeeRestControllerUnitTest {
 
     }
 
+    @Test
+    public void updateEmployeeHappyFlow() throws Exception {
+        Employee updating = new Employee("upd","upd","upd",7);
+        Employee updatedEmployee = new Employee(1,"test","test","test",1);
+
+        Mockito.when(employeeServiceImpl.updateObject(1,updating)).thenReturn(updatedEmployee);
+
+        mvc.perform(put("/employees/1").content(objectMapper.writeValueAsString(updatedEmployee))
+                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("test"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value("test"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.department").value("test"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.salary").value(1));
+
+    }
+
+    @Test
+    public void deleteEmployeeHappyFlow() throws Exception {
+
+        Mockito.verify(employeeServiceImpl).deleteObject(1);
+
+        mvc.perform(delete("/employees/1"))
+                .andExpect(status().isOk());
+
+    }
 
 
 
