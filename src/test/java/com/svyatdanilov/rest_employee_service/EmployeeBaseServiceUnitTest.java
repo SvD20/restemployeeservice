@@ -31,7 +31,7 @@ public class EmployeeBaseServiceUnitTest {
     public void getAEmployeeByIdHappyFlow(){
         int id = 1;
         Optional<Employee> employee = employeeService.getObject(id);
-        Mockito.verify(customizedEmployeeJPARepository).deleteById(id);
+        Mockito.verify(customizedEmployeeJPARepository).findById(id);
     }
 
 
