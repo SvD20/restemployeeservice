@@ -26,7 +26,7 @@ public class CustomizedEmployeeJPARepositoryUnitTest {
     public void givenCreateWhenFindAllEmployeesThenExpectOneEmployee(){
         Employee employee = new Employee("test","test", "test", 111);
         customizedEmployeeRepository.save(employee);
-        assertThat(customizedEmployeeRepository.findAll()).hasSize(8);
+        assertThat(customizedEmployeeRepository.findAll()).hasSize(9);
 
     }
 
