@@ -1,6 +1,6 @@
 package com.svyatdanilov.rest_employee_service.repository;
 
-import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
+import com.svyatdanilov.rest_employee_service.model.Employee;
 import org.springframework.stereotype.Repository;
 
 @Repository

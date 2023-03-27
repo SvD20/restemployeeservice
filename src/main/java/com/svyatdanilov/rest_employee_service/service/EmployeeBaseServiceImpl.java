@@ -1,6 +1,6 @@
 package com.svyatdanilov.rest_employee_service.service;
 
-import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
+import com.svyatdanilov.rest_employee_service.model.Employee;
 import com.svyatdanilov.rest_employee_service.customexception.EmployeeNotFoundException;
 import com.svyatdanilov.rest_employee_service.repository.CustomizedEmployeeJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;

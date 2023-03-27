@@ -1,7 +1,7 @@
 package com.svyatdanilov.rest_employee_service;
 
 
-import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
+import com.svyatdanilov.rest_employee_service.model.Employee;
 import com.svyatdanilov.rest_employee_service.repository.CustomizedEmployeeJPARepository;
 import com.svyatdanilov.rest_employee_service.service.EmployeeBaseServiceImpl;
 import org.junit.Test;

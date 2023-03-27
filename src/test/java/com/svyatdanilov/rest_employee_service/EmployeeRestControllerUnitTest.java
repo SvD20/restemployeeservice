@@ -2,7 +2,7 @@ package com.svyatdanilov.rest_employee_service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.svyatdanilov.rest_employee_service.controller.EmployeeController;
-import com.svyatdanilov.rest_employee_service.dto_entity.Employee;
+import com.svyatdanilov.rest_employee_service.model.Employee;
 import com.svyatdanilov.rest_employee_service.service.EmployeeBaseServiceImpl;
 import org.hamcrest.Matchers;
 import org.junit.Test;

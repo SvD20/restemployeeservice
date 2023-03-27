@@ -1,4 +1,4 @@
-package com.svyatdanilov.rest_employee_service.dto_entity;
+package com.svyatdanilov.rest_employee_service.model;
 import javax.persistence.*;
 
 @Entity
